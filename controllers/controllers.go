@@ -86,6 +86,9 @@ func DeleteOrders(c *gin.Context) {
 
 	id := c.Param("id")
 
+	var item models.Item
+	db.Debug().Where("order_id = ?", id).Delete(&item)
+
 	var order models.Orders
 	db.Debug().Where("id = ?", id).Delete(&order)
 
